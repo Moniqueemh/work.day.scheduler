@@ -1,9 +1,9 @@
 // possible variables
-var hourlyArray;
-var currentTime = moment();
-var currentHour;
-var textBlock = $(".col-8");
-var plannerTask = $("textarea");
+let hourlyArray;
+let currentTime = moment();
+let currentHour;
+let textBlock = $(".col-8");
+let plannerTask = $("textarea");
 
 
 // getting texts and turning into objects
