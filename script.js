@@ -1,5 +1,5 @@
 // possible variables
-let hourlyArray=0;
+let hourlyArray = 0;
 let currentTime = moment();
 let currentHour = 0;
 let textBlock = $(".col-8");
@@ -14,8 +14,6 @@ if (localStorage.getItem("localHourlyTasks")) {
 };
 // current date 
 $("#currentDay").text(`${currentTime.format('dddd, MMMM Do')}`);
-
-// create local storage
 
 
 // update text block
