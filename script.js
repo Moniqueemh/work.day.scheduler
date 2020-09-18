@@ -1,12 +1,12 @@
 // possible variables
-let hourlyArray;
+let hourlyArray=0;
 let currentTime = moment();
-let currentHour;
+let currentHour = 0;
 let textBlock = $(".col-8");
 let plannerTask = $("textarea");
 
 
-// getting texts and turning into objects
+// store and retrieve local storage
 if (localStorage.getItem("localHourlyTasks")) {
     hourlyArray = JSON.parse(localStorage.getItem("localHourlyTasks"));
 } else {
@@ -14,6 +14,9 @@ if (localStorage.getItem("localHourlyTasks")) {
 };
 // current date 
 $("#currentDay").text(`${currentTime.format('dddd, MMMM Do')}`);
+
+// create local storage
+
 
 // update text block
 function updateCurrentScheduleTime() {
@@ -29,23 +32,7 @@ function updateCurrentScheduleTime() {
     });
     currentHour = currentTime.hour();
 };
-// updating local storage evertime you hit save
-function updateLocalStorage() {
-    event.preventDefault();
-    let btnIndex = Number($(this).attr('id'));
-    $('.alert-success').removeClass('alert-animation');
-    if (plannerTask[btnIndex].value.trim() != "") {
-        hourlyArray[btnIndex] = {
-            time: $(".hour")[btnIndex].textContent.trim(),
-            task: plannerTask[btnIndex].value
-        };
-        localStorage.setItem("localHourlyTasks", JSON.stringify(hourlyArray));
-        setTimeout(function () {
-            $('.alert-success').addClass('alert-animation');
-            $('.alert-success').text(`Successfully saved task at ${$(".hour")[btnIndex].textContent.trim()}!`);
-        }, 100);
-    };
-};
+
 // after refresh, tasks are saved
 function writeCurrentTasks() {
     $.each(hourlyArray, function (i) {
